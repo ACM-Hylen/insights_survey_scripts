@@ -39,15 +39,18 @@ class MigrationScript(BaseMigration):
     ISSUE_ACADEMIC_COURSEWORK = "Academic Coursework - Fall 2020"
     ISSUE_ACADEMIC_RESILIENCY = "Academic Resilience - Fall 2020"
     ISSUE_CLASS_ATTENDANCE = "Class Attendance - Missed class (self-report) - Fall 2020"
+    ISSUE_COURSE_STRUGGLES = "Course Struggles - Fall 2020"
     ISSUE_GOAL_SETTING = "Goal Setting - Fall 2020"
+    ISSUE_SELF_EFFICACY = "Self Efficacy - Fall 2020"
     ISSUE_FINANCIAL_MEANS = "Financial Means -  Fall 2020"
     ISSUE_INTENT_TO_RETURN = "Intent to Return - Fall 2020"
     ISSUE_OVERALL_SATISFACTION = "Overall Satisfaction - Fall 2020"
     ISSUE_HOMESICKNESS = "Homesickness - Fall 2020"
     ISSUE_SENSE_OF_BELONGING = "Sense of Belonging  - Fall 2020"
+    ISSUE_STUDENT_INVOLVEMENT = "Student Involvement - Fall 2020"
     ISSUE_HEALTH_RELATED_STRESS = "Health-Related Stress - Fall 2020"
     ONLINE_CAMPUS_SERVICES = "Online Campus Services - Fall 2020"
-
+    ONLINE_COURSE_CONTENT = "Online Course Content - Fall 2020"
 
 # Talking Point text for this template
     QUESTION_EIGHT_TALKING_POINT_WEAKNESS = 'Student is unlikely to return next term. This response is a strong predictor of attrition.'

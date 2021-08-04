@@ -37,14 +37,14 @@ class MigrationScript(BaseMigration):
     QUESTION_ONE_TALKING_POINT_WEAKNESS = 'Student is questioning or reconsidering their decision to attend this institution. Reach out to this student to understand their decision and future plans.'
     QUESTION_ONE_TALKING_POINT_STRENGTH = 'Student intends to enroll this term.'
     QUESTION_ONE_NEXT_STEPS = "Students who say they don't intend to return, often don't. Intervening early with these students might help identify issues and increase the likelihood that they continue their education"
-    QUESTION_TWO_TALKING_POINT_WEAKNESS = ' Student feels they do not have the information they need to start the upcoming term. Additional outreach to this student may help clarify any questions they have.'
+    QUESTION_TWO_TALKING_POINT_WEAKNESS = 'Student feels they do not have the information they need to start the upcoming term. Additional outreach to this student may help clarify any questions they have.'
     QUESTION_TWO_TALKING_POINT_STRENGTH = 'Student feels they have the necessary information to start the term.'
     QUESTION_TWO_NEXT_STEPS = 'Uncertainty over the upcoming term may cause stress and cause students to questions enrollment decisions. Provide students with information about what the institution is doing and what is expected of them when they arrive on campus.'
     QUESTION_THREE_TALKING_POINT_WEAKNESS = 'Student indicates they lack access to technology resources necessary to complete coursework virtually. This could make completing courses that are hybrid or entirely online challenging.'
     QUESTION_THREE_TALKING_POINT_STRENGTH = 'Student feels technologically equipped for online course'
     QUESTION_THREE_NEXT_STEPS = 'If course delivery methods change to hybrid or online instruction, students without proper resources may struggle to attend class sessions, engage, and complete coursework. Making students aware of resources ahead of the term may help prevent technology from adversely affecting their experience.'
     QUESTION_FOUR_TALKING_POINT_WEAKNESS = "Student expects difficulties paying this term's tuition and fees. Resolving these issues before classes begin can help reduce stress and enable students to register for future terms. Refer this student to financial aid resources."
-    QUESTION_FOUR_TALKING_POINT_STRENGTH = 'Student is confident they can pay this terms tuition and fees.'
+    QUESTION_FOUR_TALKING_POINT_STRENGTH = "Student is confident they can pay this term's tuition and fees."
     QUESTION_FOUR_NEXT_STEPS = 'Students who lack confidence to pay their tuition and fees may experience stress from upcoming bills and may need support. Ensure students know about the financial aid office and services available to them.'
     QUESTION_FIVE_TALKING_POINT_WEAKNESS = 'Student does not feel academically prepared for the upcoming term. Given the range of possible issues, early outreach can help identify the nature of these issues so they can be connected to the right resources as early as possible.'
     QUESTION_FIVE_TALKING_POINT_STRENGTH = 'Student feels academically prepared for the upcoming term.'
@@ -722,23 +722,23 @@ class MigrationScript(BaseMigration):
                 # Question four weakness values
                 (
                     (SELECT id FROM nano_survey_configuration.issue WHERE issue_text = '{self.ISSUE_FINANCIAL_MEANS}' AND issue_type = '{self.ISSUE_TYPE_WEAKNESS}' AND question_bank_id = (SELECT id FROM nano_survey_configuration.question_bank WHERE question_text = "{self.SURVEY_QUESTION_FOUR}")),
-                    (SELECT qbo.id FROM nano_survey_configuration.question_bank_option qbo JOIN nano_survey_configuration.question_bank qb ON qb.id = qbo.question_bank_id WHERE qb.question_text = "{self.SURVEY_QUESTION_FOUR}" AND qbo.option_value = '{self.NUMERICAL_OPTION_SIX}'),
+                    (SELECT qbo.id FROM nano_survey_configuration.question_bank_option qbo JOIN nano_survey_configuration.question_bank qb ON qb.id = qbo.question_bank_id WHERE qb.question_text = "{self.SURVEY_QUESTION_FOUR}" AND qbo.option_value = '{self.NUMERICAL_OPTION_ONE}'),
                     2
                 ),
                 (
                     (SELECT id FROM nano_survey_configuration.issue WHERE issue_text = '{self.ISSUE_FINANCIAL_MEANS}' AND issue_type = '{self.ISSUE_TYPE_WEAKNESS}' AND question_bank_id = (SELECT id FROM nano_survey_configuration.question_bank WHERE question_text = "{self.SURVEY_QUESTION_FOUR}")),
-                    (SELECT qbo.id FROM nano_survey_configuration.question_bank_option qbo JOIN nano_survey_configuration.question_bank qb ON qb.id = qbo.question_bank_id WHERE qb.question_text = "{self.SURVEY_QUESTION_FOUR}" AND qbo.option_value = '{self.NUMERICAL_OPTION_SEVEN}'),
+                    (SELECT qbo.id FROM nano_survey_configuration.question_bank_option qbo JOIN nano_survey_configuration.question_bank qb ON qb.id = qbo.question_bank_id WHERE qb.question_text = "{self.SURVEY_QUESTION_FOUR}" AND qbo.option_value = '{self.NUMERICAL_OPTION_TWO}'),
                     2
                 ),
                 # Question four strength values
                 (
                     (SELECT id FROM nano_survey_configuration.issue WHERE issue_text = '{self.ISSUE_FINANCIAL_MEANS}' AND issue_type = '{self.ISSUE_TYPE_STRENGTH}' AND question_bank_id = (SELECT id FROM nano_survey_configuration.question_bank WHERE question_text = "{self.SURVEY_QUESTION_FOUR}")),
-                    (SELECT qbo.id FROM nano_survey_configuration.question_bank_option qbo JOIN nano_survey_configuration.question_bank qb ON qb.id = qbo.question_bank_id WHERE qb.question_text = "{self.SURVEY_QUESTION_FOUR}" AND qbo.option_value = '{self.NUMERICAL_OPTION_ONE}'),
+                    (SELECT qbo.id FROM nano_survey_configuration.question_bank_option qbo JOIN nano_survey_configuration.question_bank qb ON qb.id = qbo.question_bank_id WHERE qb.question_text = "{self.SURVEY_QUESTION_FOUR}" AND qbo.option_value = '{self.NUMERICAL_OPTION_SIX}'),
                     2
                 ),
                 (
                     (SELECT id FROM nano_survey_configuration.issue WHERE issue_text = '{self.ISSUE_FINANCIAL_MEANS}' AND issue_type = '{self.ISSUE_TYPE_STRENGTH}' AND question_bank_id = (SELECT id FROM nano_survey_configuration.question_bank WHERE question_text = "{self.SURVEY_QUESTION_FOUR}")),
-                    (SELECT qbo.id FROM nano_survey_configuration.question_bank_option qbo JOIN nano_survey_configuration.question_bank qb ON qb.id = qbo.question_bank_id WHERE qb.question_text = "{self.SURVEY_QUESTION_FOUR}" AND qbo.option_value = '{self.NUMERICAL_OPTION_TWO}'),
+                    (SELECT qbo.id FROM nano_survey_configuration.question_bank_option qbo JOIN nano_survey_configuration.question_bank qb ON qb.id = qbo.question_bank_id WHERE qb.question_text = "{self.SURVEY_QUESTION_FOUR}" AND qbo.option_value = '{self.NUMERICAL_OPTION_SEVEN}'),
                     2
                 ),
                 # Question five weakness values
@@ -932,7 +932,7 @@ class MigrationScript(BaseMigration):
                 (
                     (SELECT id FROM nano_survey_configuration.question_bank WHERE question_text = "{self.SURVEY_QUESTION_FOUR}" AND question_type = '{self.TEXT_SCALED}'),
                     '{self.ISSUE_TYPE_STRENGTH}',
-                    '{self.QUESTION_FOUR_TALKING_POINT_STRENGTH}',
+                    "{self.QUESTION_FOUR_TALKING_POINT_STRENGTH}",
                     null,
                     2,
                     2
@@ -1063,12 +1063,12 @@ class MigrationScript(BaseMigration):
                     2
                 ),
                 (
-                    (SELECT id FROM nano_survey_configuration.talking_point WHERE text = '{self.QUESTION_FOUR_TALKING_POINT_STRENGTH}' AND talking_point_type = '{self.ISSUE_TYPE_STRENGTH}' AND question_bank_id = (SELECT id FROM nano_survey_configuration.question_bank WHERE question_text = "{self.SURVEY_QUESTION_FOUR}")),
+                    (SELECT id FROM nano_survey_configuration.talking_point WHERE text = "{self.QUESTION_FOUR_TALKING_POINT_STRENGTH}" AND talking_point_type = '{self.ISSUE_TYPE_STRENGTH}' AND question_bank_id = (SELECT id FROM nano_survey_configuration.question_bank WHERE question_text = "{self.SURVEY_QUESTION_FOUR}")),
                     (SELECT qbo.id FROM nano_survey_configuration.question_bank_option qbo JOIN nano_survey_configuration.question_bank qb ON qb.id = qbo.question_bank_id WHERE qb.question_text = "{self.SURVEY_QUESTION_FOUR}" AND qbo.option_value = '{self.NUMERICAL_OPTION_SIX}'),
                     2
                 ),
                 (
-                    (SELECT id FROM nano_survey_configuration.talking_point WHERE text = '{self.QUESTION_FOUR_TALKING_POINT_STRENGTH}' AND talking_point_type = '{self.ISSUE_TYPE_STRENGTH}' AND question_bank_id = (SELECT id FROM nano_survey_configuration.question_bank WHERE question_text = "{self.SURVEY_QUESTION_FOUR}")),
+                    (SELECT id FROM nano_survey_configuration.talking_point WHERE text = "{self.QUESTION_FOUR_TALKING_POINT_STRENGTH}" AND talking_point_type = '{self.ISSUE_TYPE_STRENGTH}' AND question_bank_id = (SELECT id FROM nano_survey_configuration.question_bank WHERE question_text = "{self.SURVEY_QUESTION_FOUR}")),
                     (SELECT qbo.id FROM nano_survey_configuration.question_bank_option qbo JOIN nano_survey_configuration.question_bank qb ON qb.id = qbo.question_bank_id WHERE qb.question_text = "{self.SURVEY_QUESTION_FOUR}" AND qbo.option_value = '{self.NUMERICAL_OPTION_SEVEN}'),
                     2
                 ),
